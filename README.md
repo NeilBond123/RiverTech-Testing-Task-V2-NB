@@ -7,3 +7,6 @@ Project created using Visual Studio 2022's XUnit template, with LightBDD's XUnit
 
 # To run tests
 Tests can be run within Visual Studio using the Test Explorer.
+
+# Required NuGet packages
+![Capture](https://github.com/NeilBond123/RiverTech-Testing-Task-V2-NB/assets/34246644/60d660d6-a74a-42e8-ac75-1e0da45b6bc7)
