@@ -1,0 +1,25 @@
+Summary:
+	Test execution start time       : 2023-09-04 02:36:46 UTC
+	Test execution end time         : 2023-09-04 02:36:46 UTC
+	Test execution time             : 444ms
+	Test execution time (aggregated): 444ms
+	Number of features              : 1
+	Number of scenarios             : 1
+	Passed scenarios                : 1
+	Bypassed scenarios              : 0
+	Failed scenarios                : 0
+	Ignored scenarios               : 0
+	Number of steps                 : 3
+	Passed steps                    : 3
+	Bypassed steps                  : 0
+	Failed steps                    : 0
+	Ignored steps                   : 0
+	Not Run steps                   : 0
+
+Feature: ApiTests
+	API Verification
+
+	Scenario: VerifyApiResponse [_userID: "1"] [API-1] - Passed (444ms)
+		Step 1: GIVEN a valid user id - Passed (4ms)
+		Step 2: WHEN calling API with user id - Passed (424ms)
+		Step 3: THEN API response should contain valid data - Passed (2ms)
