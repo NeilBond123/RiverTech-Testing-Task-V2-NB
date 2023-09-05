@@ -4,6 +4,102 @@ using Xunit;
 
 namespace RiverTech_Testing_Task_V2
 {
+    // Page Object for the Login Page
+    public class LoginPage
+    {
+        private IWebDriver driver;
+
+        public LoginPage(IWebDriver driver)
+        {
+            this.driver = driver;
+        }
+
+        // Method to perform login
+        public void Login(string username, string password)
+        {
+            driver.FindElement(By.Id("user-name")).SendKeys(username);
+            driver.FindElement(By.Id("password")).SendKeys(password);
+            driver.FindElement(By.Id("login-button")).Click();
+        }
+    }
+
+    // Page Object for the Cart Page
+    public class CartPage
+    {
+        private IWebDriver driver;
+
+        public CartPage(IWebDriver driver)
+        {
+            this.driver = driver;
+        }
+
+        // Method to add an item to the cart
+        public void AddToCart()
+        {
+            driver.FindElement(By.XPath("//*[@id=\"add-to-cart-sauce-labs-fleece-jacket\"]")).Click();
+        }
+
+        // Method to proceed to checkout
+        public void ProceedToCheckout()
+        {
+            driver.FindElement(By.CssSelector(".shopping_cart_link")).Click();
+            driver.FindElement(By.Id("checkout")).Click();
+        }
+    }
+
+    // Page Object for the Checkout Page
+    public class CheckoutPage
+    {
+        private IWebDriver driver;
+
+        public CheckoutPage(IWebDriver driver)
+        {
+            this.driver = driver;
+        }
+
+        // Method to fill checkout information
+        public void FillCheckoutInformation(string firstName, string lastName, string postalCode)
+        {
+            driver.FindElement(By.Id("first-name")).SendKeys(firstName);
+            driver.FindElement(By.Id("last-name")).SendKeys(lastName);
+            driver.FindElement(By.Id("postal-code")).SendKeys(postalCode);
+            driver.FindElement(By.Id("continue")).Click();
+        }
+
+        // Method to assert the subtotal
+        public void AssertSubtotal(string expectedSubtotal)
+        {
+            Assert.Equal(expectedSubtotal, driver.FindElement(By.XPath("//*[@id=\"checkout_summary_container\"]/div/div[2]/div[6]")).Text);
+        }
+
+        // Method to assert the tax
+        public void AssertTax(string expectedTax)
+        {
+            Assert.Equal(expectedTax, driver.FindElement(By.XPath("//*[@id=\"checkout_summary_container\"]/div/div[2]/div[7]")).Text);
+        }
+
+        // Method to assert the total
+        public void AssertTotal(string expectedTotal)
+        {
+            Assert.Equal(expectedTotal, driver.FindElement(By.XPath("//*[@id=\"checkout_summary_container\"]/div/div[2]/div[8]")).Text);
+        }
+
+        // Method to finish the checkout process
+        public void FinishCheckout()
+        {
+            driver.FindElement(By.Id("finish")).Click();
+        }
+
+        // Method to assert order confirmation
+        public void AssertOrderConfirmation(string expectedURL, string expectedMessage)
+        {
+            Assert.Equal(expectedURL, driver.Url);
+            Assert.Equal(expectedMessage, driver.FindElement(By.XPath("//*[@id=\"checkout_complete_container\"]/div"))
+                .Text);
+        }
+    }
+
+    // Test class for Selenium tests
     public class SeleniumTests
     {
         private IWebDriver driver;
@@ -14,66 +110,42 @@ namespace RiverTech_Testing_Task_V2
         }
 
         [Fact]
-        public void TestExecution()
+        public void CreatePurchase()
         {
-            // For element identification and selection, we make use of CSS selectors, ID's and XPath for demonstration purposes.
+            // Initialize Page Objects
+            LoginPage loginPage = new LoginPage(driver);
+            CartPage cartPage = new CartPage(driver);
+            CheckoutPage checkoutPage = new CheckoutPage(driver);
 
             // Open the web app
             driver.Navigate().GoToUrl("https://www.saucedemo.com/");
 
             // Login
-            driver.FindElement(By.Id("user-name")).SendKeys("standard_user");
-            driver.FindElement(By.Id("password")).SendKeys("secret_sauce");
-            driver.FindElement(By.Id("login-button")).Click();
+            loginPage.Login("standard_user", "secret_sauce");
 
             // Add item to the cart
-            driver.FindElement(By.XPath("//*[@id=\"add-to-cart-sauce-labs-fleece-jacket\"]")).Click();
+            cartPage.AddToCart();
 
             // Open the cart and proceed to checkout
-            driver.FindElement(By.CssSelector(".shopping_cart_link")).Click();
-            driver.FindElement(By.Id("checkout")).Click();
+            cartPage.ProceedToCheckout();
 
             // Input information and continue
-            driver.FindElement(By.Id("first-name")).SendKeys("John");
-            driver.FindElement(By.Id("last-name")).SendKeys("Doe");
-            driver.FindElement(By.Id("postal-code")).SendKeys("12345");
-            driver.FindElement(By.Id("continue")).Click();
+            checkoutPage.FillCheckoutInformation("John", "Doe", "12345");
 
-            // Assert values on the next page
-            AssertValue(driver, "//*[@id=\"checkout_summary_container\"]/div/div[2]/div[6]", "Item total: $49.99");
-            AssertValue(driver, "//*[@id=\"checkout_summary_container\"]/div/div[2]/div[7]", "Tax: $4.00");
-            AssertValue(driver, "//*[@id=\"checkout_summary_container\"]/div/div[2]/div[8]", "Total: $53.99");
+            // Assert values on the checkout page
+            checkoutPage.AssertSubtotal("Item total: $49.99");
+            checkoutPage.AssertTax("Tax: $4.00");
+            checkoutPage.AssertTotal("Total: $53.99");
 
             // Click finish
-            driver.FindElement(By.Id("finish")).Click();
+            checkoutPage.FinishCheckout();
 
             // Verify order dispatch through URL and message
-            string URL = driver.Url.ToString();
-
-            AssertValueURL(driver, URL, "https://www.saucedemo.com/checkout-complete.html");
-            AssertValue(driver, "//*[@id=\"checkout_complete_container\"]/div", "Your order has been dispatched, " +
-                "and will arrive just as fast as the pony can get there!");
+            checkoutPage.AssertOrderConfirmation("https://www.saucedemo.com/checkout-complete.html",
+                "Your order has been dispatched, and will arrive just as fast as the pony can get there!");
 
             // Quit the browser
             driver.Quit();
-        }
-
-        static void AssertValue(IWebDriver driver, string selector, string expectedValue)
-        {
-            string actualValue = driver.FindElement(By.XPath(selector)).Text;
-            if (actualValue != expectedValue)
-            {
-                throw new Exception($"Assertion failed: Expected {expectedValue}, but got {actualValue}");
-            }
-        }
-
-        static void AssertValueURL(IWebDriver driver, string url, string expectedValue)
-        {
-            string actualValue = driver.Url.ToString();
-            if (actualValue != expectedValue)
-            {
-                throw new Exception($"Assertion failed: Expected {expectedValue}, but got {actualValue}");
-            }
         }
     }
 }

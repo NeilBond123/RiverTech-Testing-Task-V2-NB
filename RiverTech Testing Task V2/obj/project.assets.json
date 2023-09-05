@@ -6289,11 +6289,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Visual Studio Projects\\RiverTech Testing Task V2\\RiverTech Testing Task V2\\RiverTech Testing Task V2.csproj",
+      "projectUniqueName": "D:\\MCAST\\Repositories\\RiverTech Task\\RiverTech-Testing-Task-V2-NB\\RiverTech Testing Task V2\\RiverTech Testing Task V2.csproj",
       "projectName": "RiverTech Testing Task V2",
-      "projectPath": "D:\\Visual Studio Projects\\RiverTech Testing Task V2\\RiverTech Testing Task V2\\RiverTech Testing Task V2.csproj",
+      "projectPath": "D:\\MCAST\\Repositories\\RiverTech Task\\RiverTech-Testing-Task-V2-NB\\RiverTech Testing Task V2\\RiverTech Testing Task V2.csproj",
       "packagesPath": "C:\\Users\\epicg\\.nuget\\packages\\",
-      "outputPath": "D:\\Visual Studio Projects\\RiverTech Testing Task V2\\RiverTech Testing Task V2\\obj\\",
+      "outputPath": "D:\\MCAST\\Repositories\\RiverTech Task\\RiverTech-Testing-Task-V2-NB\\RiverTech Testing Task V2\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\epicg\\AppData\\Roaming\\NuGet\\NuGet.Config",

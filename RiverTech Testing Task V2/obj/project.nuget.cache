@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "x7WAd//+BRkkFNuw89OXgvBVXLSohWwmMbYimCMBmRoOpvKaF+elLxZdVHQpYfbSj7aYecE/ImIMDnFeSpw43Q==",
+  "dgSpecHash": "darP8aSGL0B442/oax2lJiOJsLYwDo7rilvdJm03GblVppsZPYQ3beLBe5gzFJez2Hw9Oe7tkVbQq8qMr1b6wA==",
   "success": true,
-  "projectFilePath": "D:\\Visual Studio Projects\\RiverTech Testing Task V2\\RiverTech Testing Task V2\\RiverTech Testing Task V2.csproj",
+  "projectFilePath": "D:\\MCAST\\Repositories\\RiverTech Task\\RiverTech-Testing-Task-V2-NB\\RiverTech Testing Task V2\\RiverTech Testing Task V2.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\epicg\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",
     "C:\\Users\\epicg\\.nuget\\packages\\lightbdd.core\\3.7.0\\lightbdd.core.3.7.0.nupkg.sha512",
