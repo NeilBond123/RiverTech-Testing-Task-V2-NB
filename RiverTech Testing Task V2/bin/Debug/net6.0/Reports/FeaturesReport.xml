@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TestResults>
-  <Summary TestExecutionStart="2023-09-05T07:14:13.8139109Z" TestExecutionEnd="2023-09-05T07:14:14.3353397Z" TestExecutionTime="PT0.5214288S">
+  <Summary TestExecutionStart="2023-09-05T07:29:06.5559279Z" TestExecutionEnd="2023-09-05T07:29:06.8768481Z" TestExecutionTime="PT0.3209202S">
     <Features Count="1" />
     <Scenarios Count="1" Passed="1" Bypassed="0" Failed="0" Ignored="0" />
     <Steps Count="3" Passed="3" Bypassed="0" Failed="0" Ignored="0" NotRun="0" />
   </Summary>
-  <Feature Name="ApiTests" RuntimeId="0f7e3ac6-3baf-4483-bb41-8c457b671d12">
+  <Feature Name="ApiTests" RuntimeId="8caa9862-e87a-49d2-a258-f993f1221133">
     <Description>API Verification</Description>
-    <Scenario Status="Passed" Name="VerifyApiResponse [_userID: &quot;1&quot;]" ExecutionStart="2023-09-05T07:14:13.8139109Z" ExecutionTime="PT0.5214288S" RuntimeId="deea048e-5f13-4662-a51e-d963a1901736">
+    <Scenario Status="Passed" Name="VerifyApiResponse [_userID: &quot;1&quot;]" ExecutionStart="2023-09-05T07:29:06.5559279Z" ExecutionTime="PT0.3209202S" RuntimeId="3cef372b-c7c6-4b26-9d6b-47f9f942f45e">
       <Name Format="VerifyApiResponse [_userID: &quot;{0}&quot;]">
         <Parameter IsEvaluated="true">1</Parameter>
       </Name>
       <Label Name="API-1" />
-      <Step Status="Passed" Number="1" Name="GIVEN a valid user id" ExecutionStart="2023-09-05T07:14:13.8219567Z" ExecutionTime="PT0.0052123S" RuntimeId="8678129e-a490-4e9a-a33e-05bf57b23e7f">
+      <Step Status="Passed" Number="1" Name="GIVEN a valid user id" ExecutionStart="2023-09-05T07:29:06.5638705Z" ExecutionTime="PT0.0053791S" RuntimeId="31b41f7f-3160-4d1b-b226-a934e83631fa">
         <StepName StepType="GIVEN" Format="a valid user id" />
       </Step>
-      <Step Status="Passed" Number="2" Name="WHEN calling API with user id" ExecutionStart="2023-09-05T07:14:13.8312833Z" ExecutionTime="PT0.5005901S" RuntimeId="a2b2403c-cdb7-42ad-8740-bfe76cb536f4">
+      <Step Status="Passed" Number="2" Name="WHEN calling API with user id" ExecutionStart="2023-09-05T07:29:06.573426Z" ExecutionTime="PT0.2984134S" RuntimeId="7da8df6e-c635-4d10-a553-34b7a77f6357">
         <StepName StepType="WHEN" Format="calling API with user id" />
       </Step>
-      <Step Status="Passed" Number="3" Name="THEN API response should contain valid data" ExecutionStart="2023-09-05T07:14:14.3321713Z" ExecutionTime="PT0.0020943S" RuntimeId="16d9393c-79b0-4804-a6e3-ee7682f55500">
+      <Step Status="Passed" Number="3" Name="THEN API response should contain valid data" ExecutionStart="2023-09-05T07:29:06.8721031Z" ExecutionTime="PT0.0036138S" RuntimeId="d3027ed1-ca4a-4fb4-b4b4-8abd5779059a">
         <StepName StepType="THEN" Format="API response should contain valid data" />
       </Step>
     </Scenario>
